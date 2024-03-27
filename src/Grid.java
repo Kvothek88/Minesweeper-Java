@@ -21,7 +21,7 @@ public class Grid extends JPanel {
 	private int COLS;
 	private int ROWS;
 	private int SQ_SIZE;
-    private Image[] images;
+        private Image[] images;
 	private int[][] hiddenBoard;
 	private int[][] currentBoard;
 	private int size;
@@ -34,13 +34,13 @@ public class Grid extends JPanel {
             {-1, -1}, {-1, 0}, {-1, 1},
             {0, -1},           {0, 1},
             {1, -1},  {1, 0},  {1, 1}
-		};
+	};
 	
 	
 	GameHelper helper = new GameHelper();
 	Scanner scan = new Scanner(System.in);
 
-    public Grid(String dif) {
+ public Grid(String dif) {
     	setBackground(new Color(185,185,185));
         // Load the image
         loadImage();
