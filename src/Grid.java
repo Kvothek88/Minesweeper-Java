@@ -136,13 +136,14 @@ public class Grid extends JPanel {
                     
                     
                   else if (e.getButton() == MouseEvent.BUTTON3) {
-                	  if (currentBoard[clickedRow][clickedCol] == 0) {
-                		  currentBoard[clickedRow][clickedCol] = 11;
-                      }
-                      else if (currentBoard[clickedRow][clickedCol] == 11) {
-                    	  currentBoard[clickedRow][clickedCol] = 0;
-                      }
-                    	
+			if (!gameover){
+				if (currentBoard[clickedRow][clickedCol] == 0) {
+					currentBoard[clickedRow][clickedCol] = 11;
+                        	}
+                      		else if (currentBoard[clickedRow][clickedCol] == 11) {
+                    	  		currentBoard[clickedRow][clickedCol] = 0;
+                      		}
+			}	
                   }
 
             	repaint();
