@@ -21,7 +21,7 @@ public class Grid extends JPanel {
 	private int COLS;
 	private int ROWS;
 	private int SQ_SIZE;
-        private Image[] images;
+    private Image[] images;
 	private int[][] hiddenBoard;
 	private int[][] currentBoard;
 	private int size;
@@ -34,13 +34,13 @@ public class Grid extends JPanel {
             {-1, -1}, {-1, 0}, {-1, 1},
             {0, -1},           {0, 1},
             {1, -1},  {1, 0},  {1, 1}
-	};
+		};
 	
 	
 	GameHelper helper = new GameHelper();
 	Scanner scan = new Scanner(System.in);
 
- public Grid(String dif) {
+    public Grid(String dif) {
     	setBackground(new Color(185,185,185));
         // Load the image
         loadImage();
@@ -53,8 +53,8 @@ public class Grid extends JPanel {
 			setSiz(9);
 		}
 		else if (difficulty.equals("medium")) {
-			setMines(35);
-			setFlags(35);
+			setMines(45);
+			setFlags(45);
 			setSquareSize(30);
 			setSiz(16);
 		}
@@ -82,8 +82,8 @@ public class Grid extends JPanel {
                     
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     	
-	                if (mouseX>0 && mouseX<496 && mouseY>0 && mouseY<60) {
-	                    if (mouseX>215 && mouseX<265 && mouseY>5 && mouseY<55) {
+	                if (mouseX>0 && mouseX<(SQ_SIZE*size) && mouseY>0 && mouseY<60) {
+	                    if (mouseX>((SQ_SIZE*size)/2)-25 && mouseX<((SQ_SIZE*size)/2)+25 && mouseY>5 && mouseY<55) {
 	                        gameover=false;
 	                        won=false;
 	                        setBoard();
@@ -136,14 +136,14 @@ public class Grid extends JPanel {
                     
                     
                   else if (e.getButton() == MouseEvent.BUTTON3) {
-			if (!gameover){
-				if (currentBoard[clickedRow][clickedCol] == 0) {
-					currentBoard[clickedRow][clickedCol] = 11;
-                        	}
-                      		else if (currentBoard[clickedRow][clickedCol] == 11) {
-                    	  		currentBoard[clickedRow][clickedCol] = 0;
-                      		}
-			}	
+                	  if (!gameover) {
+                    	  if (currentBoard[clickedRow][clickedCol] == 0) {
+                    		  currentBoard[clickedRow][clickedCol] = 11;
+                          }
+                          else if (currentBoard[clickedRow][clickedCol] == 11) {
+                        	  currentBoard[clickedRow][clickedCol] = 0;
+                          }
+                	  }
                   }
 
             	repaint();
@@ -219,7 +219,13 @@ public class Grid extends JPanel {
 	}
 	
 	public void setSquareSize(int size) {
-		SQ_SIZE = size;
+		if (this.getDifficulty().equals("hard")) {
+			SQ_SIZE = size+3;
+		}
+		else {
+			SQ_SIZE = size;
+		}
+		
 	}
 	
 
@@ -239,14 +245,14 @@ public class Grid extends JPanel {
         }
         
     	if (gameover==false) {
-    		g.drawImage(images[14],215,5,50,50, this);
+    		g.drawImage(images[14],((SQ_SIZE*size)/2)-25,5,50,50, this);
     	}
     	else {
     		if (won) {
-    			g.drawImage(images[16],215,5,50,50, this);
+    			g.drawImage(images[16],((SQ_SIZE*size)/2)-25,5,50,50, this);
     		}
     		else {
-    			g.drawImage(images[15],215,5,50,50, this);
+    			g.drawImage(images[15],((SQ_SIZE*size)/2)-25,5,50,50, this);
     		}
     	}
          
