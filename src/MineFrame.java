@@ -3,10 +3,18 @@ import javax.swing.JFrame;
 
 public class MineFrame extends JFrame {
 	
-	MineFrame(Grid board){
+	MineFrame(Grid board,String dif){
 		
 	    setTitle("Minesweeper");
-	    setSize(496, 578);
+	    if(dif=="easy") {
+	    	setSize(493, 576);
+	    }
+	    else if(dif=="medium") {
+	    	setSize(496, 578);
+	    }
+	    else {
+	    	setSize(586, 668);
+	    }
 	    
 	    add(board);
 	    
