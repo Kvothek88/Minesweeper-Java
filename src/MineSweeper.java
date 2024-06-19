@@ -8,7 +8,6 @@ public class MineSweeper {
     	SwingUtilities.invokeLater(() -> {
 			Grid board = new Grid("medium");
 			GameHelper helper = new GameHelper();
-			Scanner scan = new Scanner(System.in);
 			MineFrame grid = new MineFrame(board);
 			
 			
