@@ -10,7 +10,6 @@ public class MineSweeper {
 			GameHelper helper = new GameHelper();
 			MineFrame grid = new MineFrame(board);
 			
-			
 			board.setBoard();
 			//helper.printArray(board.getBoard());
 
