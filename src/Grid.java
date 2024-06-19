@@ -21,7 +21,7 @@ public class Grid extends JPanel {
 	private int COLS;
 	private int ROWS;
 	private int SQ_SIZE;
-    private Image[] images;
+    	private Image[] images;
 	private int[][] hiddenBoard;
 	private int[][] currentBoard;
 	private int size;
