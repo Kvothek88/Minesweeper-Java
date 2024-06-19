@@ -38,7 +38,6 @@ public class Grid extends JPanel {
 	
 	
 	GameHelper helper = new GameHelper();
-	Scanner scan = new Scanner(System.in);
 
     public Grid(String dif) {
     	setBackground(new Color(185,185,185));
