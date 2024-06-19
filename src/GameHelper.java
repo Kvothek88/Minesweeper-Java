@@ -63,7 +63,8 @@ public class GameHelper {
 		}
 		return mines_num;
 	}
-	
+
+	// Recursive method to open squares
 	public void openSquares(Grid grid,int row,int col) {
 		
 		if (row<0 || row>=grid.getSiz() || col<0 || col>=grid.getSiz() || grid.getCurrentBoard()[row][col]!=0) {
