@@ -17,7 +17,7 @@ public class Grid extends JPanel {
 	private int COLS;
 	private int ROWS;
 	private int SQ_SIZE;
-    private Image[] images;
+    	private Image[] images;
 	private int[][] hiddenBoard;
 	private int[][] currentBoard;
 	private int size;
@@ -29,6 +29,9 @@ public class Grid extends JPanel {
 	private static final int MINE_HIT = 10;
 	private static final int FLAG = 11;
 	private static final int NO_MINE = 13;
+	private static final int PLAY = 14;
+	private static final int LOST = 15;
+	private static final int WON = 16;
 	private static boolean gameover = false;
 	private static boolean won = false;
 	private final int[][] directions = {
@@ -245,14 +248,14 @@ public class Grid extends JPanel {
         }
         
     	if (gameover==false) {
-    		g.drawImage(images[14],((SQ_SIZE*size)/2)-25,5,50,50, this);
+    		g.drawImage(images[PLAY],((SQ_SIZE*size)/2)-25,5,50,50, this);
     	}
     	else {
     		if (won) {
-    			g.drawImage(images[16],((SQ_SIZE*size)/2)-25,5,50,50, this);
+    			g.drawImage(images[WON],((SQ_SIZE*size)/2)-25,5,50,50, this);
     		}
     		else {
-    			g.drawImage(images[15],((SQ_SIZE*size)/2)-25,5,50,50, this);
+    			g.drawImage(images[LOST],((SQ_SIZE*size)/2)-25,5,50,50, this);
     		}
     	}
          
