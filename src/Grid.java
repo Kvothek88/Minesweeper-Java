@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 public class Grid extends JPanel {
 	
 
-	private final int IMG_NUM = 18;
-	private final int HEIGHT_OFFSET = 60;
+	private static final int IMG_NUM = 18;
+	private static final int HEIGHT_OFFSET = 60;
 	private String[] board_type = {"hidden","current"};
 
 	private int COLS;
