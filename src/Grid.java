@@ -1,14 +1,11 @@
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.lang.Math;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 public class Grid extends JPanel {
 	
@@ -20,13 +17,18 @@ public class Grid extends JPanel {
 	private int COLS;
 	private int ROWS;
 	private int SQ_SIZE;
-    	private Image[] images;
+    private Image[] images;
 	private int[][] hiddenBoard;
 	private int[][] currentBoard;
 	private int size;
 	private String difficulty;
 	private int minesNum;
 	private int flags;
+	private static final int UNOPENED = 0;
+	private static final int MINE = 9;
+	private static final int MINE_HIT = 10;
+	private static final int FLAG = 11;
+	private static final int NO_MINE = 13;
 	private static boolean gameover = false;
 	private static boolean won = false;
 	private final int[][] directions = {
@@ -90,15 +92,15 @@ public class Grid extends JPanel {
 	                 }
 	                 else {
 	                	 if (!gameover) {
-		                     if (currentBoard[clickedRow][clickedCol] != 11) {
+		                     if (currentBoard[clickedRow][clickedCol] != FLAG) {
 	                            	
-		                    	 if (hiddenBoard[clickedRow][clickedCol]==0 && currentBoard[clickedRow][clickedCol]==0) {
+		                    	 if (hiddenBoard[clickedRow][clickedCol]==0 && currentBoard[clickedRow][clickedCol]==UNOPENED) {
 		                    		 helper.openSquares(Grid.this,clickedRow,clickedCol);
 		                         }
 		                            	
 		                         for (int i = 0; i < currentBoard.length; i++) {
 		                        	 for (int j = 0; j < currentBoard[i].length; j++) {
-		                            	if (currentBoard[i][j]!=0 && currentBoard[i][j]!=11) {
+		                            	if (currentBoard[i][j]!=UNOPENED && currentBoard[i][j]!=FLAG) {
 		                            		openedSquares++;
 		                            	}
 		                            }
@@ -114,16 +116,16 @@ public class Grid extends JPanel {
 		                        	 for (int i = 0; i < ROWS; i++) {
 		                        		 for (int j = 0; j < COLS; j++) {
 		                        			 if (hiddenBoard[i][j] == 1 && hiddenBoard[i][j] != currentBoard[clickedRow][clickedCol]) {
-		                        				if (currentBoard[i][j] != 11) {
-		                        					 currentBoard[i][j] = 9;
+		                        				if (currentBoard[i][j] != FLAG) {
+		                        					 currentBoard[i][j] = MINE;
 		                                        }
 		                                     }
-		                        			 else if(hiddenBoard[i][j]==0 && currentBoard[i][j]==11) {
-		                        				 currentBoard[i][j] = 13;
+		                        			 else if(hiddenBoard[i][j]==0 && currentBoard[i][j]==FLAG) {
+		                        				 currentBoard[i][j] = NO_MINE;
 		                        			 }
 		                                 }
 		                              }
-		                              currentBoard[clickedRow][clickedCol] = 10;
+		                              currentBoard[clickedRow][clickedCol] = MINE_HIT;
 		                              gameover = true;
 		                         }
 		                     }
@@ -135,11 +137,11 @@ public class Grid extends JPanel {
                     
                   else if (e.getButton() == MouseEvent.BUTTON3) {
                 	  if (!gameover) {
-                    	  if (currentBoard[clickedRow][clickedCol] == 0) {
-                    		  currentBoard[clickedRow][clickedCol] = 11;
+                    	  if (currentBoard[clickedRow][clickedCol] == UNOPENED) {
+                    		  currentBoard[clickedRow][clickedCol] = FLAG;
                           }
-                          else if (currentBoard[clickedRow][clickedCol] == 11) {
-                        	  currentBoard[clickedRow][clickedCol] = 0;
+                          else if (currentBoard[clickedRow][clickedCol] == FLAG) {
+                        	  currentBoard[clickedRow][clickedCol] = UNOPENED;
                           }
                 	  }
                   }
@@ -256,5 +258,3 @@ public class Grid extends JPanel {
          
     }
 }
-
-
