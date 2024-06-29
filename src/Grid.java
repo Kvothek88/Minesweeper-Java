@@ -92,7 +92,7 @@ public class Grid extends JPanel {
 	                	 if (!gameover) {
 		                     if (currentBoard[clickedRow][clickedCol] != 11) {
 	                            	
-		                    	 if (hiddenBoard[clickedRow][clickedCol]==0 && currentBoard[clickedRow][clickedCol]==0 && currentBoard[clickedRow][clickedCol] != 11) {
+		                    	 if (hiddenBoard[clickedRow][clickedCol]==0 && currentBoard[clickedRow][clickedCol]==0) {
 		                    		 helper.openSquares(Grid.this,clickedRow,clickedCol);
 		                         }
 		                            	
