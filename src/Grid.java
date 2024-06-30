@@ -71,6 +71,7 @@ public class Grid extends JPanel {
 		setCurrentBoard();
 		
 		addMouseListener(new MouseAdapter() {
+			
             @Override
             public void mouseClicked(MouseEvent e) {
             	
