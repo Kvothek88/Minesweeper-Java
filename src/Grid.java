@@ -17,7 +17,7 @@ public class Grid extends JPanel {
 	private int COLS;
 	private int ROWS;
 	private int SQ_SIZE;
-    	private Image[] images;
+    private Image[] images;
 	private int[][] hiddenBoard;
 	private int[][] currentBoard;
 	private int size;
@@ -49,29 +49,9 @@ public class Grid extends JPanel {
         loadImage();
 		setDifficulty(dif);
 		
-		if (difficulty.equals("easy")) {
-			setMines(12);
-			setFlags(12);
-			setSquareSize(53);
-			setSiz(9);
-		}
-		else if (difficulty.equals("medium")) {
-			setMines(45);
-			setFlags(45);
-			setSquareSize(30);
-			setSiz(16);
-		}
-		else if (difficulty.equals("hard")) {
-			setMines(100);
-			setFlags(100);
-			setSquareSize(16);
-			setSiz(30);
-		}
-		setBoard();
-		setCurrentBoard();
+		setGame(dif);
 		
 		addMouseListener(new MouseAdapter() {
-			
             @Override
             public void mouseClicked(MouseEvent e) {
             	
@@ -90,8 +70,7 @@ public class Grid extends JPanel {
 	                    if (mouseX>((SQ_SIZE*size)/2)-25 && mouseX<((SQ_SIZE*size)/2)+25 && mouseY>5 && mouseY<55) {
 	                        gameover=false;
 	                        won=false;
-	                        setBoard();
-	                        setCurrentBoard();
+	                        setGame(getDifficulty());
 	                    }
 	                 }
 	                 else {
@@ -224,7 +203,7 @@ public class Grid extends JPanel {
 	
 	public void setSquareSize(int size) {
 		if (this.getDifficulty().equals("hard")) {
-			SQ_SIZE = size+3;
+			SQ_SIZE = size + 3;
 		}
 		else {
 			SQ_SIZE = size;
@@ -232,6 +211,38 @@ public class Grid extends JPanel {
 		
 	}
 	
+	public int getSquareSize() {
+		return SQ_SIZE;
+	}
+	
+	public int getHeightOffset() {
+		return HEIGHT_OFFSET;
+	}
+	
+	public void setGame(String difficulty) {
+		if (difficulty.equals("easy")) {
+			setMines(12);
+			setFlags(12);
+			setSquareSize(53);
+			setSiz(9);
+		}
+		else if (difficulty.equals("medium")) {
+			setMines(45);
+			setFlags(45);
+			setSquareSize(30);
+			setSiz(16);
+		}
+		else if (difficulty.equals("hard")) {
+			setMines(113);
+			setFlags(113);
+			setSquareSize(16);
+			setSiz(30);
+		}
+		setBoard();
+		setCurrentBoard();
+		
+		helper.printArray(hiddenBoard);
+	}
 
     @Override
     public void paintComponent(Graphics g) {
