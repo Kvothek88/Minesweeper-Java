@@ -1,13 +1,4 @@
 
-import java.util.Collections;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import java.awt.BorderLayout;
-import java.util.ArrayList;
-
 public class GameHelper {
 
 	public int[][] fillArray(int size, int num_of_mines, String type)  {
@@ -47,7 +38,8 @@ public class GameHelper {
 				System.out.print(" ");
 			}
 			System.out.println();
-		}		
+		}
+		System.out.println();
 	}
 	
 	public int searchAdjacentMines(Grid grid,int row, int col) {
@@ -63,8 +55,7 @@ public class GameHelper {
 		}
 		return mines_num;
 	}
-
-	// Recursive method to open squares
+	
 	public void openSquares(Grid grid,int row,int col) {
 		
 		if (row<0 || row>=grid.getSiz() || col<0 || col>=grid.getSiz() || grid.getCurrentBoard()[row][col]!=0) {
@@ -89,3 +80,6 @@ public class GameHelper {
 	}
 	
 }
+
+
+
