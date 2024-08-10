@@ -19,6 +19,7 @@ public class DifficultyActionListener implements ActionListener {
     	board.setDifficulty(difficulty);
     	board.setGame(difficulty);
     	frame.resetSize(difficulty);
-        
+        board.setGameover(false);
+	board.setWon(false);
     }
 }
