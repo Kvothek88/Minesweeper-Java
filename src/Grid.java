@@ -32,8 +32,8 @@ public class Grid extends JPanel {
 	private static final int PLAY = 14;
 	private static final int LOST = 15;
 	private static final int WON = 16;
-	private static boolean gameover = false;
-	private static boolean won = false;
+	private boolean gameover = false;
+	private boolean won = false;
 	private final int[][] directions = {
             {-1, -1}, {-1, 0}, {-1, 1},
             {0, -1},           {0, 1},
@@ -217,6 +217,14 @@ public class Grid extends JPanel {
 	
 	public int getHeightOffset() {
 		return HEIGHT_OFFSET;
+	}
+
+	public void setGameover(boolean gameover) {
+		this.gameover=gameover;
+	}
+
+	public void setWon(boolean won) {
+		this.won=won;
 	}
 	
 	public void setGame(String difficulty) {
