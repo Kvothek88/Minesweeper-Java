@@ -13,21 +13,11 @@ public class MineFrame extends JFrame {
 	
 	MineFrame(Grid board,String dif){
 		
-		this.board=board;
+	    this.board=board;
 		
 	    setTitle("Minesweeper");
-	    if(dif=="easy") {
-	    	setSize(493, 597);
-	    }
-	    else if(dif=="medium") {
-	    	setSize(496, 601);
-	    }
-	    else {
-	    	setSize(586, 692);
-	    }
-	    
+	    resetSize(dif);
 	    add(board);
-	    
 	    
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setLocationRelativeTo(null);
